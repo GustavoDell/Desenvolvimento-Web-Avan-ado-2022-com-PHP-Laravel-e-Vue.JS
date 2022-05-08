@@ -38,20 +38,12 @@ Route::get('/login', function(){ return 'Login';})->name('site.login');
 // Metodo prefix() para agrupar rotas
 Route::prefix('/app')->group(function(){
     Route::get('/clientes', function(){ return 'Clientes';})->name('app.clientes');
-    Route::get('/fornecedores', function(){ return 'Fornecedores';})->name('app.fornecedores');
+    Route::get('/fornecedores', 'FornecedorController@index')->name('app.fornecedores');
     Route::get('/produtos', function(){return 'Produtos';})->name('app.produtos');
 });
 
 //Redirecionamento de rotas
-Route::get('/rota1', function() {
-    echo 'Rota 1';
-})->name('site.rota1');
-
-Route::get('/rota2', function() {
-   return redirect()->route('site.rota1');
-})->name('site.rota2');
-
-//Route::redirect('/rota2', 'rota1');
+Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('teste');
 
 //O metodo de fallback possibilta com que tratamos o erro de quando user acessa uma rota que não está disponivel.
 Route::fallback(function() {
