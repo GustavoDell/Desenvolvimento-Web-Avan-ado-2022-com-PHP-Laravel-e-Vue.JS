@@ -26,12 +26,24 @@ class ContatoController extends Controller
         // print_r($contato->getAttributes());
         // $contato->save();
 
-        $contato = new SiteContato();
+        //$contato = new SiteContato();
         //$contato->fill($request->all()); // fill preenche os objetos do atributo com base no array associativo
-        $contato->create($request->all()); // create segue a mesma base do metodo fill(), porem não é preciso do metodo save()
+        //$contato->create($request->all()); // create segue a mesma base do metodo fill(), porem não é preciso do metodo save()
         //$contato->save();
-        print_r($contato->getAttributes());
+        //print_r($contato->getAttributes());
 
         return view('site.contato', ['titulo' => 'Contato (teste)']);
+    }
+
+    public function salvar(Request $request) 
+    {
+        $request->validate([
+            'nome' => 'required',
+            'telefone' => 'required',
+            'email' => 'required',
+            'motivo_contato' => 'required',
+            'mensagem' => 'required'
+        ]); // validate metodo que valida os inputs dos campos
+        //SiteContato::create($request->all()); // create segue a mesma base do metodo fill(), porem não é preciso do metodo save()
     }
 }
