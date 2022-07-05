@@ -38,11 +38,11 @@ class ContatoController extends Controller
     public function salvar(Request $request) 
     {
         $request->validate([
-            'nome' => 'required',
+            'nome' => 'required|min:3|max:40',
             'telefone' => 'required',
             'email' => 'required',
             'motivo_contato' => 'required',
-            'mensagem' => 'required'
+            'mensagem' => 'required|max:2000'
         ]); // validate metodo que valida os inputs dos campos
         //SiteContato::create($request->all()); // create segue a mesma base do metodo fill(), porem não é preciso do metodo save()
     }
