@@ -9,6 +9,12 @@ class ContatoController extends Controller
 {
     public function contato (Request $request) 
     {
+        $motivo_contatos = [
+            '1' => 'Dúvida',
+            '2' => 'Elogio',
+            '3' => 'Reclamação',
+        ];
+
         // echo '<pre>';
         // print_r($request->all()); //retona todos parametros do formulario com base um array associativo
         // echo '</pre>';
@@ -32,7 +38,7 @@ class ContatoController extends Controller
         //$contato->save();
         //print_r($contato->getAttributes());
 
-        return view('site.contato', ['titulo' => 'Contato (teste)']);
+        return view('site.contato', ['titulo' => 'Contato (teste)', 'motivo_contatos' => $motivo_contatos]);
     }
 
     public function salvar(Request $request) 
