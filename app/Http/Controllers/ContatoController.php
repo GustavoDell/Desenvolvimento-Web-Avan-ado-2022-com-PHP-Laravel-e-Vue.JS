@@ -44,9 +44,10 @@ class ContatoController extends Controller
             'nome' => 'required|min:3|max:40',
             'telefone' => 'required',
             'email' => 'email',
-            'motivo_contato' => 'required',
+            'motivo_contatos_id' => 'required',
             'mensagem' => 'required|max:2000'
         ]); // validate metodo que valida os inputs dos campos
-        //SiteContato::create($request->all()); // create segue a mesma base do metodo fill(), porem não é preciso do metodo save()
+        SiteContato::create($request->all()); // create segue a mesma base do metodo fill(), porem não é preciso do metodo save()
+        return redirect()->route('site.index');
     }
 }
