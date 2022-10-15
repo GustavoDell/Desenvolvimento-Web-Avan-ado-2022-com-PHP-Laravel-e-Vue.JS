@@ -18,8 +18,13 @@
     <br>
     <button type="submit" class="{{ $classe }}">ENVIAR</button>
 </form>
-<div style="position: absolute; top: 0px; left: 0px; width: 100%; background: red;">
-    <pre>
-    {{print_r($errors)}}
-    </pre>
-</div>
+@if($errors->any())<!-- any() valida se errors possui algum erro -->
+    <div style="position: absolute; top: 0px; left: 0px; width: 100%; background: red;">
+
+        @foreach ($errors->all() as $erro)
+            {{ $erro }}
+            <br >
+        @endforeach
+
+    </div>
+@endif
