@@ -27,7 +27,7 @@ Route::get('/', function () {
 });
 */
 //metodo name renomea as rotas para ser utilizado dentro do codigo
-Route::get('/', 'PrincipalController@principal')->name('site.index');
+Route::get('/', 'PrincipalController@principal')->name('site.index')->middleware('log.acesso');
 
 Route::get('/sobre-nos', 'SobreNosController@sobreNos')->name('site.sobrenos');
 
