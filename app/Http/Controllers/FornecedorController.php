@@ -17,7 +17,7 @@ class FornecedorController extends Controller
             ->where('site', 'like', '%'.$request->input('site').'%')
             ->where('uf', 'like', '%'.$request->input('uf').'%')
             ->where('email', 'like', '%'.$request->input('email').'%')
-            ->paginate(2);
+            ->paginate(3);
 
         return view('app.fornecedor.listar', ['fornecedores' => $fornecedores, 'request' => $request->all()]);
     }
@@ -27,7 +27,7 @@ class FornecedorController extends Controller
         $msg = '';
         
         //inclusão
-        if($request->input('_token') != '' && $request->input('_token') == '') {
+        if($request->input('_token') != '' && $request->input('id') == '') {
             //validacao
             $regras = [
                 'nome' => 'required|min:3|max:40',
@@ -54,7 +54,7 @@ class FornecedorController extends Controller
         }
 
         //edição
-        if($request->input('_token') != '' && $request->input('_token') != '') {
+        if($request->input('_token') != '' && $request->input('id') != '') {
             $fornecedor = Fornecedor::find($request->input('id'));
             $update = $fornecedor->update($request->all());
 
